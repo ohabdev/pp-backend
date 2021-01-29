@@ -1,0 +1,22 @@
+{
+  "name": "pp-api",
+  "version": "1.0.0",
+  "description": "PP API",
+  "main": "server/www.js",
+  "scripts": {
+    "start": "node ./server/www.js",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/ohabdev/pp-backend.git"
+  },
+  "keywords": [
+    "bb-api"
+  ],
+  "bugs": {
+    "url": "https://github.com/ohabdev/pp-backend/issues"
+  },
+  "author": "ohabdev",
+  "license": "MIT"
+}
