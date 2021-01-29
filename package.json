@@ -1,11 +1,14 @@
 {
   "name": "pp-api",
   "version": "1.0.0",
-  "description": "PP API",
+  "description": "PP API Development",
   "main": "server/www.js",
   "scripts": {
     "start": "node ./server/www.js",
     "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "dependencies": {
+    "express": "^4.17.1"
   },
   "repository": {
     "type": "git",
