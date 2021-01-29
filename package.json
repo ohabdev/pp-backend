@@ -5,7 +5,8 @@
   "main": "server/www.js",
   "scripts": {
     "start": "node ./server/www.js",
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "dev": "NODE_ENV=development&nodemon ./server/www.js -e js,json"
   },
   "dependencies": {
     "dotenv": "^8.2.0",
@@ -22,6 +23,6 @@
   "bugs": {
     "url": "https://github.com/ohabdev/pp-backend/issues"
   },
-  "author": "ohabdev",
+  "author": "Ohab Riaz <ohabdev@gmail.com>",
   "license": "MIT"
 }
