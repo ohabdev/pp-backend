@@ -1,4 +1,5 @@
 const http = require('http');
+const mongoose = require('mongoose');
 
 class Kernel {
     startHttpServer() {
