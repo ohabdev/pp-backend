@@ -13,15 +13,10 @@
     "express": "^4.17.1",
     "nconf": "^0.11.2"
   },
-  "repository": {
-    "type": "git",
-    "url": "git+https://github.com/ohabdev/pp-backend.git"
-  },
-  "keywords": [
-    "bb-api"
-  ],
-  "bugs": {
-    "url": "https://github.com/ohabdev/pp-backend/issues"
+  "devDependencies": {
+    "eslint": "^7.18.0",
+    "eslint-config-airbnb-base": "^14.2.1",
+    "eslint-plugin-import": "^2.22.1"
   },
   "author": "Ohab Riaz <ohabdev@gmail.com>",
   "license": "MIT"
