@@ -49,9 +49,11 @@ class Kernel {
 function kernelFactory(config) {
 
     const kernel = new Kernel(config);
-
+    
     kernel.loadModule(require('./core/express'));
     kernel.loadModule(require('./core/mongoose'));
+    kernel.loadModule(require('./models/log'));
+
     return kernel;
 }
   
