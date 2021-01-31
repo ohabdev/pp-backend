@@ -34,7 +34,7 @@ class Kernel {
     
     loadModule(module){
 
-        console.log(module);
+        console.log('=====loadModule==>', module);
 
         if (module.config){
             this.config = _.defaults(this.config, module.config);
@@ -44,13 +44,14 @@ class Kernel {
             module.core(this);    
         }
     }
-
 }
 
 function kernelFactory(config) {
+
     const kernel = new Kernel(config);
 
     kernel.loadModule(require('./core/express'));
+    kernel.loadModule(require('./core/mongoose'));
     return kernel;
 }
   
