@@ -1,17 +1,16 @@
-const express = require('express');
-const bodyParser = require('body-parser')
-const path = require('path');
 const methodOverride = require('method-override');
-const morgan = require('morgan');
-const SwigEngine = require('swig').Swig;
 const info = require('../../../package.json');
+const bodyParser = require('body-parser')
+const SwigEngine = require('swig').Swig;
+const express = require('express');
+const morgan = require('morgan');
 const nconf = require('nconf');
-const session  = require('express-session');
-const MongoStore =   require('connect-mongo')(session);
+const path = require('path');
 const cors = require('cors');
 
+const session  = require('express-session');
+const MongoStore =   require('connect-mongo')(session);
 const swig = new SwigEngine();
-
 exports.name = 'kernel-app';
 
 exports.config = {
@@ -20,6 +19,7 @@ exports.config = {
 
 // Expose app
 exports.core = (kernel) => {
+
     kernel.addProp('app', express());
     kernel.app.engine('swig', swig.renderFile);
     kernel.app.engine('html', swig.renderFile);
@@ -33,8 +33,10 @@ exports.core = (kernel) => {
     kernel.app.use(bodyParser.urlencoded({
         extended: false
     }));
+
     kernel.app.use(bodyParser.json());
     kernel.app.use(methodOverride());
+
     if (process.env.NODE_ENV === 'production') {
         // log only 4xx and 5xx responses to console
         kernel.app.use(morgan('dev', {
@@ -47,6 +49,7 @@ exports.core = (kernel) => {
     }
 
     kernel.app.use(express.static(this.config.publicPath));
+    // express session MongoStore
     kernel.app.use(session({
         secret: 'foo',
         resave: false, //don't save session if unmodified
@@ -63,7 +66,6 @@ exports.core = (kernel) => {
             author: 'Ohab Riaz <ohabdev@gmaill.com>',
             appName: info.name,
             version: info.version,
-        })
-    })
-
+        });
+    });
 } 
