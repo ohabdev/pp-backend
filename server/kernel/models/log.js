@@ -1,3 +1,4 @@
+
 const mongoose = require('mongoose');
 
 exports.model = {
@@ -24,9 +25,18 @@ exports.model = {
             },
             error: {
                 type: mongoose.Schema.Types.Mixed
+              },
+              createdAt: { type: Date, default: Date.now },
+              updatedAt: { type: Date, default: Date.now }  
+        }, {
+            collection: 'logs',
+            minimize: false,
+            timestamps: {
+              createdAt: 'createdAt',
+              updatedAt: 'updatedAt'
             }
+        });
 
-            
-        })
+        return LogSchema;
     }
 }

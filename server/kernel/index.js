@@ -1,3 +1,4 @@
+
 const http = require('http');
 const _ = require('lodash');
 const mongoose = require('mongoose');
@@ -7,7 +8,7 @@ class Kernel {
     constructor(config){
         // Kernel object base key configuration
         this.config = config || {};
-        this._modelSchema = {};
+        this._modelSchemas = {};
         this._mongoosePlugins = {};
         this._routes = [];
         this._agendaJobs = [];
@@ -42,6 +43,12 @@ class Kernel {
 
         if (module.core) {
             module.core(this);    
+        }
+
+        if (module.model) {
+            Object.keys(module.model).forEach((modelName) => {
+              this._modelSchemas[modelName] = module.model[modelName];
+            });
         }
     }
 }
