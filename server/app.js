@@ -4,7 +4,7 @@ const path = require('path');
 /*
     Cause we have to run queue with local file, so we will create queue name just for single server
     for scaling, so we will create a random key her as prefix/subfix for some queue
-*/loadModule
+*/
 process.env.LOCAL_ID = Math.random().toString(36).substring(7);
 process.env.APP_ROOT_DIR = path.join(__dirname, '..');
 
