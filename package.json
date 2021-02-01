@@ -4,9 +4,10 @@
     "version": "1.0.0",
     "main": "server/www.js",
     "scripts": {
+        "start": "node ./server/www.js",
         "dev": "NODE_ENV=development&nodemon ./server/www.js -e js,json",
         "test": "echo \"Error: no test specified\" && exit 1",
-        "start": "node ./server/www.js"
+        "migrate": "node ./server/migrate.js"
     },
     "dependencies": {
         "body-parser": "^1.19.0",
