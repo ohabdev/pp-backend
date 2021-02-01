@@ -36,21 +36,46 @@ class Kernel {
     loadModule(module){
 
         console.log('=====loadModule==>', module);
-
+        // load config module
         if (module.config){
             this.config = _.defaults(this.config, module.config);
         }
-
+        // load core module express/mongoose/agendaJobs 
         if (module.core) {
             module.core(this);    
         }
-
+        // load applcation models
         if (module.model) {
             Object.keys(module.model).forEach((modelName) => {
               this._modelSchemas[modelName] = module.model[modelName];
             });
         }
     }
+
+    // load all models to constructor db;
+    _modelLoader(){
+        const db = {};
+        Object.keys(this._modelSchemas).forEach((name) => {
+            const schema = typeof this._modelSchemas[name] === 'function' ? this._modelSchemas[name]() : this._modelSchemas[name]; 
+            if (schema instanceof mongoose.Schema) {
+                if (this._mongoosePlugins[name] && Array.isArray(this._mongoosePlugins[name])) {
+                    this._mongoosePlugins[name].forEach(pluginFuncitonFactory => schema.plugin(pluginFuncitonFactory));
+                }
+                db[name] =  mongoose.model(name, schema);
+            } else {
+                db[name] = schema;
+            }
+        });
+
+        this.db = db;
+    }
+
+    compose(){
+        this._modelLoader();
+        // set global DB
+        global.DB = this.db;
+    }
+    
 }
 
 function kernelFactory(config) {

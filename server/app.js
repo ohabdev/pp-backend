@@ -19,6 +19,6 @@ const kernel = new Kernel();
 kernel.loadModule(require('./module/system'));
 
 // NOTE - compose at last
-// kernel.compose();
+kernel.compose();
 
 module.exports = kernel;
