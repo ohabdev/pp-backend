@@ -2,6 +2,8 @@
 const http = require('http');
 const _ = require('lodash');
 const mongoose = require('mongoose');
+const ResponseMiddleware =  require('./middlewares/response');
+
 
 class Kernel {
 
@@ -16,7 +18,7 @@ class Kernel {
         this.httpServer = null;
         this.db = {};
         this.middleware = {
-            Response: {},
+            Response: ResponseMiddleware,
             Request: {}
         }
     }
@@ -50,6 +52,12 @@ class Kernel {
               this._modelSchemas[modelName] = module.model[modelName];
             });
         }
+
+        // load all module routes to constractor
+        if (module.router) {            
+            this._routes.push(module.router);
+        }
+
     }
 
     // load all models to constructor db;
@@ -74,6 +82,8 @@ class Kernel {
         this._modelLoader();
         // set global DB
         global.DB = this.db;
+        global.Middleware = this.middleware;
+        this._routes.forEach(route => route(this.app));
     }
     
 }
