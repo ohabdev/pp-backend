@@ -5,7 +5,8 @@ module.exports = (router) => {
 
     router.get(
         '/v1/system/configs/public',
-        configController.publicConfig
+        configController.publicConfig,
+        Middleware.Response.success('publicConfig')
     )
 
 }

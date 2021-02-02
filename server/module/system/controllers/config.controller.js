@@ -2,7 +2,8 @@
 
 exports.publicConfig = async (req, res, next) => {
     console.log('====================================');
-    console.log('response from config controllers');
+    console.log(Middleware);
     console.log('====================================');
-    return
+    res.locals.publicConfig = "Hello world";
+    next();
 }
