@@ -1,4 +1,6 @@
 
+// Config collections migrations schema
+
 module.exports =  async () => DB.Config.find({})
     .remove()
     .then(() => DB.Config.create(

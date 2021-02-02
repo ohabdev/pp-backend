@@ -17,6 +17,7 @@ const Kernel = require('./kernel');
 const kernel = new Kernel();
 
 kernel.loadModule(require('./module/system'));
+kernel.loadModule(require('./module/i18n'));
 
 // NOTE - compose at last
 kernel.compose();
