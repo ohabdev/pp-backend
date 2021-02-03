@@ -83,6 +83,7 @@ class Kernel {
         // set global DB
         global.DB = this.db;
         global.Middleware = this.middleware;
+        global.Log =  require('./util/log');
         this._routes.forEach(route => route(this.app));
     }
     

@@ -21,7 +21,6 @@ exports.publicConfig = async (req, res, next) => {
             })),
             defaultLanguage: defaultLanguage && defaultLanguage.length ? defaultLanguage[0] : 'en'
         }
-
         res.locals.publicConfig = data;
         next()
     } catch (e) {
