@@ -23,8 +23,12 @@ if (args.length && args[0] === 'test') {
         console.log('======>> Config data migration done');
 
         console.log('======>> i18n-language migrating...');
-        await require('./i18n.js')();
+        await require('./i18n')();
         console.log('======>> i18n-language data migration done');
+        
+        console.log('======>> Country data migrating...');
+        await require('./country')();
+        console.log('======>> Country data migration done');
         
         console.log('======>> All data migration done');
         process.exit();
