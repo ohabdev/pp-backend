@@ -1,0 +1,11 @@
+{
+    "name": "PP API",
+    "version": "1.0.0",
+    "description": "Personal protfolio API",
+    "title": "PP API documentation",
+    "url": "https://localhost:9000",
+    "template": {
+        "withCompare": true,
+        "withGenerator": true
+    }
+}
