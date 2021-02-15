@@ -1,12 +1,12 @@
-
 const mongoose = require('mongoose');
 
 exports.model = {
-    Log(){
+    Log() {
         const LogSchema = new mongoose.Schema({
             path: {
-                type: String,
+                type: String
             },
+
             reqQuery: {
                 type: mongoose.Schema.Types.Mixed
             },
@@ -25,18 +25,18 @@ exports.model = {
             },
             error: {
                 type: mongoose.Schema.Types.Mixed
-              },
-              createdAt: { type: Date, default: Date.now },
-              updatedAt: { type: Date, default: Date.now }  
+            },
+            createdAt: { type: Date, default: Date.now },
+            updatedAt: { type: Date, default: Date.now }
         }, {
             collection: 'logs',
             minimize: false,
             timestamps: {
-              createdAt: 'createdAt',
-              updatedAt: 'updatedAt'
+                createdAt: 'createdAt',
+                updatedAt: 'updatedAt'
             }
         });
 
         return LogSchema;
     }
-}
+};
